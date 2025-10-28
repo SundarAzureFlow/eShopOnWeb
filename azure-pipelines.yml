@@ -17,3 +17,7 @@ steps:
 
 - script: dotnet test
   displayName: 'Run unit tests'
+- script: dotnet build **/*.sln --configuration Release
+  displayName: 'Build the project'
+- script: dotnet test **/*Tests/*.csproj --configuration Release --no-build
+  displayName: 'Run unit tests'
