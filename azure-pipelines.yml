@@ -1,0 +1,19 @@
+# Simple .NET Core CI pipeline
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '9.0.x'
+
+- script: dotnet build
+  displayName: 'Build the project'
+
+- script: dotnet test
+  displayName: 'Run unit tests'
